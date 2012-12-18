@@ -1,0 +1,2 @@
+/usr/bin/ar cr libSilkSupport.a  CMakeFiles/SilkSupport.dir/raw_istream.cpp.o CMakeFiles/SilkSupport.dir/ErrorHandler.cpp.o CMakeFiles/SilkSupport.dir/Util.cpp.o
+/usr/bin/ranlib libSilkSupport.a
