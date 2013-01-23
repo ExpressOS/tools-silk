@@ -1,7 +1,7 @@
-The silk Project
+The silk project
 ====
 
-The silk Project contains a collection of modular and reusable 
+The silk project contains a collection of modular and reusable 
 libraries that compile Common Intermediate Language (CIL) bytecode to
 LLVM bitcode. Silk simplifies the task of constructing virtual
 machines and static compilers for CIL on commodity hardware platforms,
