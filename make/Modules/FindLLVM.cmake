@@ -30,7 +30,7 @@ IF(LLVM_FOUND)
     )
 
   EXECUTE_PROCESS(
-    COMMAND ${LLVM_CONFIG_EXECUTABLE} --libs core bitwriter target support 
+    COMMAND ${LLVM_CONFIG_EXECUTABLE} --libs core bitwriter support
     OUTPUT_VARIABLE LLVM_LIBS
     OUTPUT_STRIP_TRAILING_WHITESPACE
     )

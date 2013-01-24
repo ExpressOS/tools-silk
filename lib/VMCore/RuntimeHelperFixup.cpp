@@ -17,7 +17,7 @@
 #include <llvm/Constants.h>
 #include <llvm/PassManager.h>
 #include <llvm/IntrinsicInst.h>
-#include <llvm/Support/IRBuilder.h>
+#include <llvm/IRBuilder.h>
 
 using namespace llvm;
 

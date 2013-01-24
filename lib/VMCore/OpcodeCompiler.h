@@ -11,7 +11,7 @@
 
 #include "silk/decil/ObjectModel.h"
 
-#include <llvm/Support/IRBuilder.h>
+#include <llvm/IRBuilder.h>
 
 #include <vector>
 #include <unordered_map>

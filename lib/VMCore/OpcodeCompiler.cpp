@@ -17,7 +17,7 @@
 #include "silk/Support/Util.h"
 
 #include <llvm/Module.h>
-#include <llvm/Target/TargetData.h>
+#include <llvm/DataLayout.h>
 
 #include <iostream>
 
@@ -927,7 +927,7 @@ namespace silk
         }
         else
         {
-            TargetData TD(engine_->module());
+            DataLayout TD(engine_->module());
             int size = (int)TD.getTypeStoreSize(vm_class->physical_type());
             auto alloc = builder_.CreateCall(intrinsic->new_object(), builder_.getInt32(size));
             thiz = builder_.CreateBitCast(alloc, PointerType::getUnqual(vm_class->physical_type()));
@@ -1221,7 +1221,7 @@ namespace silk
 
     void OpcodeCompiler::VisitNewarr(ITypeReference *type_ref)
     {
-        TargetData TD(engine_->module());
+        DataLayout TD(engine_->module());
         auto intrinsic_new_array = engine_->intrinsic()->new_array();
         auto vm_class = engine_->GetVMClassForNamedType(type_ref->resolved_type());
         auto vm_array_class = new VMClassVector(engine_, vm_class);
@@ -1333,7 +1333,7 @@ namespace silk
     {
         auto vm_class = engine_->GetVMClassForNamedType(type_ref->resolved_type());
 
-        TargetData TD(engine_->module());
+        DataLayout TD(engine_->module());
         auto size = TD.getTypeStoreSize(vm_class->physical_type());
         
         auto int32ty = GetPrimitiveType(INamedTypeDefinition::TypeCode::Int32);
@@ -1348,7 +1348,7 @@ namespace silk
         
         Operand val = Pop();
 
-        TargetData TD(engine_->module());
+        DataLayout TD(engine_->module());
         auto intrinsic = engine_->intrinsic();
         
         int size = (int)TD.getTypeStoreSize(vm_class->boxed_type());
