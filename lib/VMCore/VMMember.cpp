@@ -9,6 +9,8 @@
 #include "VMMember.h"
 #include "VMClass.h"
 
+#include <algorithm>
+
 namespace silk
 {
     using namespace decil;

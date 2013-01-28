@@ -303,7 +303,7 @@ namespace silk
     {
         auto &c = engine_->module()->getContext();
         auto int_ty = Type::getInt32Ty(c);
-        physical_type_ = normal_type_ = physical_type_ = int_ty;
+        physical_type_ = normal_type_ = boxed_type_ = int_ty;
         LoadVMMethods();
         state_ = State::kInitialized;
     }

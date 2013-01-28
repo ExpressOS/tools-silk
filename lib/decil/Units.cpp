@@ -8,6 +8,8 @@
 
 #include "silk/decil/ObjectModel.h"
 
+#include <algorithm>
+
 namespace silk
 {
     namespace decil

@@ -15,6 +15,7 @@
 #include "silk/Support/Util.h"
 
 #include <iostream>
+#include <algorithm>
 
 namespace silk
 {

@@ -9,9 +9,9 @@
 #include "MDLoader.h"
 #include "Metadata.h"
 #include "PEFileReader.h"
-
+#include "silk/Support/Util.h"
+ 
 #include <locale>
-#include <codecvt>
 #include <iostream>
 
 namespace silk
@@ -127,16 +127,7 @@ namespace silk
             is.seek(v->offset);
             
             auto str = is.peek_utf8_null_terminated();
-            if (str.length() != 0)
-            {
-                std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> utf16conv;
-                v->string = utf16conv.from_bytes(str);
-            }
-            else
-            {
-                v->string.clear();
-            }
-            
+            v->string = ToUTF16String(str);
             return *this;
         }
         

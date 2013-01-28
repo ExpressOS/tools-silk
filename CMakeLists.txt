@@ -4,13 +4,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/make/Modules)
 
 find_package(LLVM 3.2 REQUIRED)
 
-if (NOT LIBCXX_INCLUDE_DIR)
-  message (FATAL_ERROR "Cannot find headers from libc++")
-endif()
-
 include_directories(include)
 include_directories(${LLVM_INCLUDE_DIR})
-include_directories(${LIBCXX_INCLUDE_DIR})
 
 #if (NOT CMAKE_BUILD_TYPE)
 #  set (CMAKE_BUILD_TYPE "Release")
@@ -18,9 +13,8 @@ include_directories(${LIBCXX_INCLUDE_DIR})
 set (CMAKE_BUILD_TYPE "Debug")
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__STDC_LIMIT_MACROS=1 -D__STDC_CONSTANT_MACROS=1")
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden -fno-exceptions -fno-rtti -fPIC")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Wno-unused-parameter")
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 add_subdirectory (lib) 
 add_subdirectory (tools)

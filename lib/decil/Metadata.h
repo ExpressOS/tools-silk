@@ -12,6 +12,7 @@
 #include <vector>
 #include <limits>
 #include <cassert>
+#include <cstdint>
 
 namespace silk
 {
@@ -147,13 +148,13 @@ namespace silk
             const_iterator end() const
             { return entries_.end(); }
             
-            const EntryType &get(size_t index) const
+            const EntryType &get(std::size_t index) const
             {
                 assert (index > 0);
                 return entries_.at(index);
             }
             
-            EntryType &get(size_t index)
+            EntryType &get(std::size_t index)
             {
                 assert (index > 0);
                 return entries_.at(index);

@@ -21,7 +21,7 @@ namespace silk
     namespace mangler
     {
         std::u16string mangle(decil::IMethodDefinition *v);
-    };
+    }
 }
 
 #endif

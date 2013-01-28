@@ -58,7 +58,7 @@ namespace silk
             { return this; }
         };
         
-        class ITypeReference : public IMetadata
+        class ITypeReference : virtual public IMetadata
         {
         public:
             virtual ITypeDefinition *resolved_type() = 0;

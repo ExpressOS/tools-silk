@@ -15,6 +15,7 @@
 #include <llvm/DerivedTypes.h>
 
 #include <unordered_map>
+#include <functional>
 
 namespace silk
 {
