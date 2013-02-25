@@ -1021,7 +1021,7 @@ namespace silk
         auto tc = ToPrimitiveTypeCode(opcode);
         auto vm_class = GetPrimitiveType(tc);
         auto dst_type = vm_class->normal_type();
-        auto is_dst_unsigned = IsUnsignedIntVMClass(r.type);
+        auto is_dst_unsigned = IsConversionToUnsigned(opcode);
         
         Value *new_v = nullptr;
         
@@ -1436,6 +1436,32 @@ namespace silk
             case decil::INamedTypeDefinition::TypeCode::UInt32:
             case decil::INamedTypeDefinition::TypeCode::UInt64:
             case decil::INamedTypeDefinition::TypeCode::Char:
+                return true;
+                
+            default:
+                return false;
+        }
+    }
+    
+    bool OpcodeCompiler::IsConversionToUnsigned(Opcode opcode)
+    {
+        switch (opcode) {
+            case kConv_r_un:
+            case kConv_u1:
+            case kConv_u2:
+            case kConv_u4:
+            case kConv_u8:
+            case kConv_u:
+            case kConv_ovf_u1_un:
+            case kConv_ovf_u2_un:
+            case kConv_ovf_u4_un:
+            case kConv_ovf_u8_un:
+            case kConv_ovf_u_un:
+            case kConv_ovf_u1:
+            case kConv_ovf_u2:
+            case kConv_ovf_u4:
+            case kConv_ovf_u8:
+            case kConv_ovf_u:
                 return true;
                 
             default:

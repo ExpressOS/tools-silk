@@ -48,6 +48,7 @@ namespace silk
         void CompileInstruction(decil::IOperation *op);
         VMClass *GetPrimitiveType(decil::INamedTypeDefinition::TypeCode tc);
         bool IsUnsignedIntVMClass(const VMClass *clazz) const;
+        static bool IsConversionToUnsigned(decil::Opcode opcode);
         
         void Push(const Operand &op) { stack_->push_back(op); }
         Operand Pop();
