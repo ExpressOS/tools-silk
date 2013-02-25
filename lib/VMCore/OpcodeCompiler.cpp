@@ -517,8 +517,29 @@ namespace silk
             case kConv_u8:
             case kConv_i:
             case kConv_u:
+            case kConv_ovf_i1_un:
+            case kConv_ovf_i2_un:
+            case kConv_ovf_i4_un:
+            case kConv_ovf_i8_un:
+            case kConv_ovf_u1_un:
+            case kConv_ovf_u2_un:
+            case kConv_ovf_u4_un:
+            case kConv_ovf_u8_un:
+            case kConv_ovf_i_un:
+            case kConv_ovf_u_un:
+            case kConv_ovf_i1:
+            case kConv_ovf_u1:
+            case kConv_ovf_i2:
+            case kConv_ovf_u2:
+            case kConv_ovf_i4:
+            case kConv_ovf_u4:
+            case kConv_ovf_i8:
+            case kConv_ovf_u8:
+            case kConv_ovf_i:
+            case kConv_ovf_u:
                 VisitConversion(op->opcode());
                 break;
+                
             // XXX: Implement virtual calls
             case kCallvirt:
                 VisitCall(dynamic_cast<IMethodReference*>(op->operand().GetMetadata()));
@@ -561,17 +582,7 @@ namespace silk
             case kStobj:
                 VisitStobj(dynamic_cast<ITypeReference*>(op->operand().GetMetadata()));
                 break;
-//            case kConv_ovf_i1_un:
-//            case kConv_ovf_i2_un:
-//            case kConv_ovf_i4_un:
-//            case kConv_ovf_i8_un:
-//            case kConv_ovf_u1_un:
-//            case kConv_ovf_u2_un:
-//            case kConv_ovf_u4_un:
-//            case kConv_ovf_u8_un:
-//            case kConv_ovf_i_un:
-//            case kConv_ovf_u_un:
-//                break;
+
             case kBox:
                 VisitBox(dynamic_cast<ITypeReference*>(op->operand().GetMetadata()));
                 break;
@@ -618,15 +629,6 @@ namespace silk
             case kUnbox_any:
                 VisitUnboxAny(dynamic_cast<ITypeReference*>(op->operand().GetMetadata()));
                 break;
-//            case kConv_ovf_i1:
-//            case kConv_ovf_u1:
-//            case kConv_ovf_i2:
-//            case kConv_ovf_u2:
-//            case kConv_ovf_i4:
-//            case kConv_ovf_u4:
-//            case kConv_ovf_i8:
-//            case kConv_ovf_u8:
-//                break;
 //            case kRefanyval:
 //                is >> token;
 //                operand.SetMetadata(GetType(token));
@@ -640,8 +642,6 @@ namespace silk
             case kLdtoken:
                 VisitLdtoken(op->operand().GetMetadata());
                 break;
-//            case kConv_ovf_i:
-//            case kConv_ovf_u:
 //            case kAdd_ovf:
 //            case kAdd_ovf_un:
 //            case kMul_ovf:
@@ -1541,48 +1541,68 @@ namespace silk
             case kLdind_i1:
             case kStind_i1:
             case kConv_i1:
+            case kConv_ovf_i1_un:
+            case kConv_ovf_i1:
             case kLdelem_i1:
             case kStelem_i1:
                 return INamedTypeDefinition::TypeCode::Int8;
             case kLdind_u1:
             case kConv_u1:
+            case kConv_ovf_u1_un:
+            case kConv_ovf_u1:
             case kLdelem_u1:
                 return INamedTypeDefinition::TypeCode::UInt8;
             case kLdind_i2:
             case kStind_i2:
             case kConv_i2:
+            case kConv_ovf_i2_un:
+            case kConv_ovf_i2:
             case kLdelem_i2:
             case kStelem_i2:
                 return INamedTypeDefinition::TypeCode::Int16;
             case kLdind_u2:
             case kConv_u2:
+            case kConv_ovf_u2_un:
+            case kConv_ovf_u2:
             case kLdelem_u2:
                 return INamedTypeDefinition::TypeCode::UInt16;
             case kLdind_i4:
             case kStind_i4:
             case kConv_i4:
+            case kConv_ovf_i4_un:
+            case kConv_ovf_i4:                    
             case kLdelem_i4:
             case kStelem_i4:
                 return INamedTypeDefinition::TypeCode::Int32;
             case kLdind_u4:
             case kConv_u4:
+            case kConv_ovf_u4_un:
+            case kConv_ovf_u4:                    
             case kLdelem_u4:
                 return INamedTypeDefinition::TypeCode::UInt32;
             case kLdind_i8:
             case kStind_i8:
             case kConv_i8:
+            case kConv_ovf_i8_un:
+            case kConv_ovf_i8:                    
             case kLdelem_i8:
             case kStelem_i8:
                 return INamedTypeDefinition::TypeCode::Int64;
             case kConv_u8:
+            case kConv_ovf_u8_un:
+            case kConv_ovf_u8:                    
                 return INamedTypeDefinition::TypeCode::UInt64;
             case kLdind_i:
             case kStind_i:
             case kConv_i:
+            case kConv_ovf_i_un:
+            case kConv_ovf_i:
             case kLdelem_i:
             case kStelem_i:
                 return engine_->NativeIntTypeCode();
             case kConv_u:
+            case kConv_ovf_u:
+            case kConv_ovf_u_un:                    
                 return engine_->NativeUIntTypeCode();
                 
             case kLdind_r4:
